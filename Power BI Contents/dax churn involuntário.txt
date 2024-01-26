@@ -1,0 +1,6 @@
+Churn Débito = 
+var cancelamentos = 
+CALCULATE(COUNTA(cc_cancelamentos[contrato]), cc_cancelamentos[AuxCancelamentos]="Débito")
+var base_ini = 'Medidas de base'[Base Inicial]
+return
+cancelamentos/base_ini

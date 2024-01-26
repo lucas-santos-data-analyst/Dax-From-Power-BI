@@ -1,0 +1,7 @@
+Base Inicial = 
+var base_atual = 'Medidas de base'[Base Atual]
+var migracoes = CALCULATE(COUNTA(cc_migracoes[id_contrato]), FILTER(ALL('1dcalendario'), '1dcalendario'[data]>=MIN('1dcalendario'[data])))
+var ativacoes = CALCULATE(COUNTA(cc_ativacoes[id_contrato]),FILTER(ALL('1dcalendario'),'1dcalendario'[data]>=MIN('1dcalendario'[data])))
+var cancelamentos = CALCULATE(COUNTA(cc_cancelamentos[id_contrato]), FILTER(ALL('1dcalendario'),'1dcalendario'[data]>=MIN('1dcalendario'[data])))
+return
+(base_atual - migracoes - ativacoes) + cancelamentos

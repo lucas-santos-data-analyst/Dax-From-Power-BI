@@ -1,0 +1,1 @@
+Net Adds = 'Medidas de base'[Base Final]-'Medidas de base'[Base Inicial]

@@ -1,0 +1,3 @@
+=DateTimeZone.SwitchZone(DateTimeZone.LocalNow(),-3)
+
+Colocar tipo de dado como fuso horário.

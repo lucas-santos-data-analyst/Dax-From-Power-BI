@@ -1,0 +1,6 @@
+Churn Ouvidoria = 
+var cancelamentos = 
+CALCULATE(COUNTA(cc_cancelamentos[contrato]), cc_cancelamentos[AuxCancelamentos]="Ouvidoria")
+var base_ini = 'Medidas de base'[Base Inicial]
+return
+cancelamentos/base_ini

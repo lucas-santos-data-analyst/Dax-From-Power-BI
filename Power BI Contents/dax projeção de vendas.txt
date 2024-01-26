@@ -1,0 +1,54 @@
+Projeção de Vendas = 
+var realizado = calculate(
+    COUNTA(Vendas_Voalle[ID de Contrato]),
+        DATESBETWEEN(
+            'dCalendário'[Data],
+                STARTOFMONTH('dCalendário'[Data]),
+                ENDOFMONTH('dCalendário'[Data])),
+        'dCalendário'[Data]<today(),
+        REMOVEFILTERS('dCalendário'[Dia]))
+var realizado2 = calculate(
+    COUNTA(Vendas_Voalle[ID de Contrato]),
+        DATESBETWEEN(
+            'dCalendário'[Data],
+                today()-8,
+                today()),
+        'dCalendário'[Data]<today(),
+        REMOVEFILTERS('dCalendário'[Dia]))     
+var d_passados = [d_passados]
+/*var d_passados = calculate(
+    count('dCalendário'[Data]),
+    DATESBETWEEN(
+        'dCalendário'[Data],
+            STARTOFMONTH('dCalendário'[Data]),
+            ENDOFMONTH('dCalendário'[Data])),
+    'dCalendário'[Dia_Semana]<>"domingo",
+    'dCalendário'[Data]<today(),
+    REMOVEFILTERS('dCalendário'[Dia]))*/
+var d_passados2 = calculate(
+    count('dCalendário'[Data]),
+    DATESBETWEEN(
+        'dCalendário'[Data],
+                today()-8,
+                today()),
+    'dCalendário'[Dia_Semana]<>"domingo",
+    'dCalendário'[Data]<today(),
+    REMOVEFILTERS('dCalendário'[Dia]))    
+var realizado_acm = calculate(
+    Vendas_Voalle[Vendas Lançadas],
+        DATESMTD('dCalendário'[Data]),
+        'dCalendário'[Data]<today())
+var mdd = if(
+    max('dCalendário'[Data])<(TODAY()-1),
+        blank(),
+        1)
+var diaspost = [diaspost]
+/*var diaspost = calculate(
+    count('dCalendário'[Data]),
+        DATESMTD('dCalendário'[Data]),
+        'dCalendário'[Data]>=TODAY(),
+        'dCalendário'[Dia_Semana]<>"domingo")*/
+return
+if(day(today())<=7,
+    (((realizado2/d_passados2)*diaspost)+realizado_acm)*mdd,
+    (((realizado/d_passados)*diaspost)+realizado_acm)*mdd)

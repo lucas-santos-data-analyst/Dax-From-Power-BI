@@ -1,0 +1,5 @@
+Crescimento = 
+var base_fin = 'Medidas de base'[Base Final]
+var base_ini = [Base Inicial]
+return
+(base_fin/base_ini)-1

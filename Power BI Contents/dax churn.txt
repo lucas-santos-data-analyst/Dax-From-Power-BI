@@ -1,0 +1,5 @@
+Churn = 
+var cancelamentos = DISTINCTCOUNT(cc_cancelamentos[id_contrato])
+var base_ini = 'Medidas de base'[Base Inicial]
+return
+(cancelamentos/base_ini)+0
